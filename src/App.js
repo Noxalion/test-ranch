@@ -1,9 +1,11 @@
 import './App.css';
+import Ranch from './components/Ranch';
 
 function Game() {
+
   return (
-    <div className="App">
-      <p>Hello world</p>
+    <div className="game">
+      <Ranch />
     </div>
   );
 }
