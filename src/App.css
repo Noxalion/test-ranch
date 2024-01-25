@@ -20,7 +20,7 @@
 .ranch {
   margin: 8vh;
   display: grid;
-  grid-template-columns: repeat(7, 240px);
+  grid-template-columns: repeat(4, 240px);
   -moz-column-gap: 120px;
        column-gap: 120px;
   row-gap: 120px;
@@ -31,6 +31,9 @@
   position: relative;
   height: 240px;
   width: 240px;
+  border: 1px dashed #644325;
+  box-sizing: border-box;
+  border-radius: 14px;
 }
 .corral-facility {
   width: 100%;

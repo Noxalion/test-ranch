@@ -1,21 +1,25 @@
 import Corral from './Corral';
-import { useState } from 'react';
 
-function Ranch() {
-  const [ressources, setRessources] = useState(0);
+function Ranch(props) {
+  let {
+    corralsList,
+    ressources
+  } = props
+
+  const corrals = [];
+  for (let i = 0; i < corralsList.length; i++) {
+    corrals.push(
+      <Corral key={i}
+        state={corralsList[i]}
+      />
+    )
+  }
 
   return(
     <>
       <p className='ressources-count'>Nbr ressources: {ressources}</p>
       <div className='ranch'>
-        <Corral 
-          ressources={ressources}
-          setRessources={setRessources}
-        />
-        <Corral 
-          ressources={ressources}
-          setRessources={setRessources}
-        />
+        {corrals}
       </div>
     </>
   );

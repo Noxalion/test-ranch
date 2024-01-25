@@ -1,7 +1,6 @@
 function Corral(props) {
   let {
-    ressources,
-    setRessources
+    state
   } = props
 
 //   setTimeout(gainRessource, 1000);
@@ -15,9 +14,12 @@ function Corral(props) {
 
   return(
     <div className='corral-zone'>
-      <div className='corral-facility'></div>
-      <div className='corral-feeder'></div>
-      <div className='corral-collector'></div>
+      {state !== "empty" && <>
+          <div className='corral-facility'></div>
+          <div className='corral-feeder'></div>
+          <div className='corral-collector'></div>
+        </>
+      }
     </div>
   );
 }
