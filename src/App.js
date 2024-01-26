@@ -8,20 +8,29 @@ function Game() {
   const [corralsList, setCorralsList] = useState([
     "beast", "empty", "empty", "empty", "empty"
   ]);
-  const [cooldown, setCooldown] = useState([
+  let cooldown = [
     1, 0, 0, 0, 0
-  ]);
-
-  setInterval(checkGainedRessources,5000);
+  ];
+  
+  //setInterval(checkGainedRessources,2000);
 
   function checkGainedRessources(){
     let newRessources = 0;
+    let cooldownCopy = structuredClone(cooldown);
     for (let i = 0; i < corralsList.length; i++) {
       if (corralsList[i] !== "empty") {
-        newRessources += ManagingCorral(i, cooldown, setCooldown);
+        if (cooldownCopy[i] === 0) {
+            newRessources++;
+            cooldownCopy[i] = 1;
+        }else{
+            cooldownCopy[i]--;
+        }
+        //newRessources += ManagingCorral(i, cooldown, setCooldown);
       }
     }
-    setRessources(ressources + newRessources);
+    cooldown = cooldownCopy;
+    newRessources = ressources + newRessources;
+    setRessources(newRessources);
     setInterval(checkGainedRessources,1000);
   }
 
